@@ -49,18 +49,16 @@ const [drawerOpen, setDrawerOpen] = useState(false);
           </li>
         ))}
       </Paper>
-      <Paper component="ul" sx={{...root}}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
-        />
-        <Chip
-          icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count})`}
-        />
-        <Chip label={`Released: ${movie.release_date}`} />
-      </Paper>
+     <Paper component="ul" sx={{ ...root }}>
+  <li>
+    <Chip label="Production Countries" sx={{ ...chip }} color="primary" />
+  </li>
+  {movie.production_countries && movie.production_countries.map((country) => (
+    <li key={country.name}>
+      <Chip label={country.name} sx={{ ...chip }} />
+    </li>
+  ))}
+</Paper>
             <Fab
         color="secondary"
         variant="extended"
